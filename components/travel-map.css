@@ -1,0 +1,37 @@
+.map-box { position: relative; z-index: 0; isolation: isolate; height: 420px; border-radius: 24px; overflow: hidden; border: 1px solid var(--line2); background: #0b0f1a; }
+.map-box .leaflet-container { width: 100%; height: 100%; background: #0b0f1a; font-family: var(--font-inter), sans-serif; }
+/* Tema gelap: balik warna tile peta standar */
+.map-box .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9) saturate(0.5); }
+.map-box .leaflet-control-attribution { background: rgba(11,15,26,.85) !important; color: #9aa3b2 !important; font-size: 10px; }
+.map-box .leaflet-control-attribution a { color: #f5a524 !important; }
+.map-box .leaflet-bar a { background: #121829; color: #f5a524; border-color: #2a3350; }
+.map-box .leaflet-bar a:hover { background: #1b2540; }
+
+.pin-wrap { background: none !important; border: 0 !important; }
+.pin { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono), monospace; font-weight: 600; font-size: 14px; border: 2px solid #f5a524; background: #121829; color: #f5a524; box-sizing: border-box; animation: pinpop .5s both; cursor: pointer; }
+.pin.wishlist { border-style: dashed; border-color: #9aa3b2; color: #9aa3b2; background: #0b0f1a; }
+.pin.sel { background: #f5a524; color: #0b0f1a; animation: pinring 1.6s ease-out infinite; }
+@keyframes pinpop { 0% { transform: scale(0); opacity: 0; } 70% { transform: scale(1.15); } 100% { transform: scale(1); opacity: 1; } }
+@keyframes pinring { 0% { box-shadow: 0 0 0 0 rgba(245,165,36,.55); } 100% { box-shadow: 0 0 0 14px rgba(245,165,36,0); } }
+
+.legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; font-family: var(--font-mono), monospace; font-size: 12px; color: var(--muted); }
+
+.place-card { margin-top: 24px; background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; max-width: 720px; }
+.place-photo { height: 240px; display: flex; align-items: center; justify-content: center; background: repeating-linear-gradient(135deg, #1b2540 0 14px, #151c30 14px 28px); font-family: var(--font-mono), monospace; font-size: 12px; color: var(--muted); animation: slidein .35s both; }
+.place-photo img { width: 100%; height: 100%; object-fit: cover; }
+@keyframes slidein { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: none; } }
+.place-info { padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.place-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
+.round { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line2); background: var(--bg); color: var(--amber); font-size: 18px; cursor: pointer; }
+.round.fill { background: var(--amber); border-color: var(--amber); color: var(--bg); }
+.dots { display: flex; gap: 8px; align-items: center; }
+.dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--line2); }
+.dots span.on { background: var(--amber); }
+
+.place-list { display: flex; flex-direction: column; gap: 10px; margin-top: 28px; max-width: 720px; }
+.place-btn { display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0 16px; background: transparent; border: 1px solid var(--line); border-radius: 14px; color: var(--text); font-size: 15px; text-align: left; cursor: pointer; font-family: inherit; }
+.place-btn.on { border-color: var(--amber); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pin, .pin.sel, .place-photo { animation: none !important; }
+}
